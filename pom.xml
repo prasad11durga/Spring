@@ -24,7 +24,7 @@
             <filter>src/main/resources/mail.properties</filter>
         </filters>
         <defaultGoal>package</defaultGoal>
-        <finalName>shoppingCart</finalName>
+        <finalName>webServices</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>

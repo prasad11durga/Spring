@@ -22,5 +22,5 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd
     </cxf:bus>
     <jaxws:client id="helloClient"
                   serviceClass="com.seethayya.webservice.soapservice.HelloWorld"
-                  address="http://localhost:8080/shoppingCart/services/HelloWorld"/>
+                  address="http://localhost:8080/webServices/services/HelloWorld"/>
 </beans>

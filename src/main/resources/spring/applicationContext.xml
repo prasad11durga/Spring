@@ -17,6 +17,7 @@
     <context:property-placeholder location="classpath:*.properties,classpath*:*.properties" />
     <import resource="classpath*:META-INF/cxf/cxf.xml"/>
     <import resource="classpath*:META-INF/cxf/cxf-servlet.xml"/>
+    <!-- TODO logging is not working need toi check-->
     <cxf:bus>
         <cxf:features>
             <cxf:logging/>

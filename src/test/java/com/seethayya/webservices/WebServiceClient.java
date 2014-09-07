@@ -20,7 +20,7 @@ public class WebServiceClient {
     private static final Logger LOGGER = Logger.getLogger(WebServiceClient.class);
 
     @Test
-    public void testAuditCustomer() {
+    public void testHelloWorld() {
         LOGGER.debug("=====Start---");
         System.out.println("====start");
         String message = helloWorld.sayHello("Good morning");
