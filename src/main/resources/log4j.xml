@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <appender name="console" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-5p %c{1} - %m%n"/>
+        </layout>
+    </appender>
+    <appender name="shoppingCart" class="org.apache.log4j.rolling.RollingFileAppender">
+        <!-- The active file to log to -->
+        <param name="file" value="${catalina.home}/logs/shoppingCart.log"/>
+        <param name="append" value="true"/>
+        <param name="encoding" value="UTF-8"/>
+        <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+            <!-- The file to roll to, this is a fairly intelligent parameter, if the file
+          ends in .gz, it gzips it, based on the date stamp it rolls at that time,
+          default is yyyy-MM-dd, (rolls at midnight)
+          See: http://logging.apache.org/log4j/companions/extras/apidocs/org/apache/log4j/rolling/TimeBasedRollingPolicy.html -->
+            <param name="FileNamePattern" value="/applogs/myportal/portal.%d.log.gz"/>
+        </rollingPolicy>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p  [%c{1}] %m %n"/>
+        </layout>
+    </appender>
+
+    <appender name="mail" class="com.seethayya.webservice.util.DynamicSubjectAppender">
+        <param name="BufferSize" value="512"/>
+        <param name="SMTPHost" value="${smtp.host}"/>
+        <param name="SMTPPort" value="${smtp.port}"/>
+        <param name="SMTPProtocol" value="${smtp.protocol}"/>
+        <param name="SMTPUsername" value="${userName}"/>
+        <param name="SMTPPassword" value="${password}"/>
+        <param name="From" value="${userName}"/>
+        <param name="To" value="${to.mail.address}"/>
+        <param name="Subject" value="Error occured in #CLASS in method #METHOD at line no #LINENO on due to"/>
+        <layout class="org.apache.log4j.HTMLLayout">
+            <param name="ConversionPattern" value="%d [%t] %-5p %c %x – %m%n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="error"/>
+            <param name="LevelMax" value="fatal"/>
+        </filter>
+    </appender>
+
+    <logger name="com.seethayya" additivity="false">
+        <level value="debug"/>
+        <appender-ref ref="console"/>
+        <appender-ref ref="shoppingCart"/>
+        <appender-ref ref="mail"/>
+    </logger>
+    <logger name="org.hibernate.SQL">
+        <level value="debug"/>
+        <appender-ref ref="console"/>
+        <appender-ref ref="shoppingCart"/>
+    </logger>
+    <logger name="org.springframework">
+        <level value="error"/>
+        <appender-ref ref="console"/>
+        <appender-ref ref="shoppingCart"/>
+    </logger>
+    <logger name="com.google.code">
+        <level value="debug"/>
+        <appender-ref ref="console"/>
+        <appender-ref ref="shoppingCart"/>
+    </logger>
+
+    <root>
+        <priority value="error"/>
+        <appender-ref ref="console"/>
+        <appender-ref ref="shoppingCart"/>
+        <appender-ref ref="mail"/>
+    </root>
+
+</log4j:configuration>
