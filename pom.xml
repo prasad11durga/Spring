@@ -18,6 +18,7 @@
         <hibernate-version>4.3.5.Final</hibernate-version>
         <spring-memcache-version>3.4.0</spring-memcache-version>
         <cxf.version>3.0.1</cxf.version>
+        <tool.wsimport>${JAVA_HOME}/bin/wsimport.exe</tool.wsimport>
     </properties>
     <build>
         <filters>
@@ -66,6 +67,36 @@
                 </execution>
             </executions>
         </plugin>
+            <plugin>
+                <groupId>org.jvnet.jax-ws-commons</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>2.3</version>
+                <executions>
+                    <!--<execution>
+                        <id>wsgen-from-jdk</id>
+                        <goals>
+                            <goal>wsgen</goal>
+                        </goals>
+                        <configuration>
+                            <executable>${tool.wsgen}</executable>
+                            <sei>com.mycompany.MyService</sei>
+                        </configuration>
+                    </execution>-->
+                    <execution>
+                        <id>wsimport-from-jdk</id>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <executable>${tool.wsimport}</executable>
+
+                            <wsdlUrls>
+                                <wsdlUrl>http://localhost:8080/webServices/services/HelloWorld?wsdl</wsdlUrl>
+                            </wsdlUrls>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
     <!--<repositories>
