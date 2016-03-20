@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+        <struts>
+               <constant name="struts.devMode" value="true"/>
+               
+               <package name="struts" extends="struts-default">
+               
+               <!-- Declaring or configuring actions -->
+               
+               <action name="latha" class="com.struts2.action.SimpleAction" >
+               		<result name="success">/login.jsp</result>
+               </action>
+               
+               <action name="register" class="com.struts2.action.RegistrationAction" method="registerPage">
+               		<result name="success">/registration.jsp</result>
+               </action>
+               
+                <action name="registerMe" class="com.struts2.action.RegistrationAction" method="validateForm">
+               		<result name="error">/registration.jsp</result>
+               		<result name="success">/success.jsp</result>
+               </action>
+               
+               </package>
+         </struts>

@@ -1,0 +1,62 @@
+<!-- Deployment Descriptor -->
+<web-app>
+	<filter>
+		<filter-name>filter1</filter-name>
+		<filter-class>com.servlet.first.SimpleFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>filter1</filter-name>
+		<url-pattern>/firstServlet</url-pattern>
+	</filter-mapping>
+
+<!-- First Program -->
+	<servlet>
+		<servlet-name>latha</servlet-name>
+		<servlet-class>com.servlet.first.SimpleServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>latha</servlet-name>
+		<url-pattern>/firstServlet</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Second servlet program -->
+	
+	<servlet>
+		<servlet-name>loginServlet</servlet-name>
+		<servlet-class>com.servlet.first.LoginServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>loginServlet</servlet-name>
+		<url-pattern>/loginServlet</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Third servlet generic example -->
+	<servlet>
+		<servlet-name>generic1</servlet-name>
+		<servlet-class>com.servlet.first.GenericServletExample</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>generic1</servlet-name>
+		<url-pattern>/genericServlet</url-pattern>
+	</servlet-mapping>
+	
+	<!--Fourth Http Servlet example -->
+	
+	<servlet>
+		<servlet-name>http1</servlet-name>
+		<servlet-class>com.servlet.first.HttpServletExample</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>http1</servlet-name>
+		<url-pattern>/httpServlet</url-pattern>
+	</servlet-mapping>
+	
+	<welcome-file-list>
+		<welcome-file>/login.jsp</welcome-file>
+	</welcome-file-list>
+	
+</web-app>

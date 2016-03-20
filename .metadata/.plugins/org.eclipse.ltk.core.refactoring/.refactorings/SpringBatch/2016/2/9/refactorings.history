@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;SpringBatch/src/main/resources/databse.xml&apos; to &apos;database.xml&apos;" description="Rename resource &apos;databse.xml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/resources/databse.xml" name="database.xml" stamp="1456063560658" updateReferences="true"/>
+</session>

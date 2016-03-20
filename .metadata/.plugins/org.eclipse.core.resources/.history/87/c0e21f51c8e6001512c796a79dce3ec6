@@ -1,0 +1,10 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<html>
+	<body>
+		<form:form action="validateLogin" modelAttribute="loginForm">
+			User Name:  <input type="text" name="username"/>
+			Password:   <input type="password" name="password"/>
+						<input type="submit" /> 
+		</form>
+	</body>
+</html>

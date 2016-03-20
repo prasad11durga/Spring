@@ -1,0 +1,25 @@
+package com.hibernate;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+ 
+public class TestMain {
+ 
+    public static void main(String[] args) {
+ 
+    	
+    	StudentService service = new StudentService();
+    	
+        Student student = new Student();
+        student.setName("Prasad");
+        student.setRoll("102");
+        student.setPhone("88888");
+        student.setDegree("B.Tech");
+ 
+        service.addStudent(student);
+        student.setDegree("MCA");
+        service.updateUser(student);
+    }
+}

@@ -1,0 +1,26 @@
+<job id="abcJob" xmlns="http://www.springframework.org/schema/batch">
+	<step id="step1" next="step2">
+	  <tasklet>
+		<chunk reader="cvsItemReader" writer="cvsItemWriter"  
+                    processor="itemProcesser" commit-interval="1" />
+	  </tasklet>
+	</step>
+	<step id="step2" next="step3">
+	  <tasklet>
+		<chunk reader="cvsItemReader" writer="databaseItemWriter"  
+                    processor="itemProcesser" commit-interval="1" />
+	  </tasklet>
+	</step>
+	<step id="step3" next="step4">
+	  <tasklet ref="fileDeletingTasklet" />
+	</step>
+	<step id="step4" next="step5">
+	  <tasklet>
+		<chunk reader="databaseItemReader" writer="xmlItemWriter"  
+                    processor="itemProcesser" commit-interval="1" />
+	  </tasklet>
+	</step>
+	<step id="step5">
+		<tasklet ref="sendingEmailTasklet" />
+	</step>
+  </job>
